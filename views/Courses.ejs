@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Courses</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        nav {
+            background-color: #007bff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .navbar-brand {
+            color: #fff;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logout-btn {
+            background-color: #fff;
+            color: #007bff;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+
+        .logout-btn:hover {
+            background-color: #e6e6e6;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a class="navbar-brand" href="/">Iris</a>
+        <form action="/logout" method="post">
+            <button class="logout-btn" type="submit">Logout</button>
+        </form>
+    </nav>
+    <h1>My Courses</h1>
+
+    <% if (courses.length > 0) { %>
+        <ul>
+            <% courses.forEach(course => { %>
+                <li>
+                    <strong>Course Code:</strong> <%= course.CourseCode %><br>
+                    <strong>Course Title:</strong> <%= course.CourseTitle %><br>
+                    <strong>Instructor:</strong> <%= course.Instructor %><br>
+                    <strong>Schedule:</strong> <%= course.Schedule.join(', ') %><br>
+                    <strong>Credits:</strong> <%= course.Credits %><br>
+                    <strong>Course Type:</strong> <%= course.CourseType %>
+                </li>
+            <% }); %>
+        </ul>
+    <% } else { %>
+        <p>No courses found </p>
+    <% } %>
+</body>
+</html>

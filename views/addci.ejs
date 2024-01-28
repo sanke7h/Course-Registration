@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Faculty</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            width: 400px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <form action="/addci" method="post">
+        <div>
+            <label for="Name">Enter Instructor Name</label>
+            <input id="Name" type="text" name="Name" required>
+        </div>
+        <div>
+            <label for="Email">Enter Email</label>
+            <input id="Email" type="email" name="Email" required>
+        </div>
+        <div>
+            <label for="Password">Enter Password</label>
+            <input id="Password" type="password" name="Password" required>
+        </div>
+        <div>
+            <label for="StaffId">Enter StaffId</label>
+            <input id="StaffId" type="text" name="StaffId" required>
+        </div>
+        <button type="submit">Add Course Instructor</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Batch</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        h2 {
+            color: #007bff;
+        }
+
+        form {
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            width: 400px;
+        }
+
+        div {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 8px; /* Decreased padding */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%; /* Set the width to 100% */
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        nav {
+            background-color: #007bff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .navbar-brand {
+            color: #fff;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logout-btn {
+            background-color: #fff;
+            color: #007bff;
+            padding: 8px 16px; /* Decreased padding */
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+
+        .logout-btn:hover {
+            background-color: #e6e6e6;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a class="navbar-brand" href="/">Iris</a>
+        <form action="/logout" method="post">
+            <button class="logout-btn" type="submit">Logout</button>
+        </form>
+    </nav>
+    <form action="/addbatch" method="post">
+        <h2>Create Batch</h2>
+        <div>
+            <label for="BatchName">Enter Batch Name</label>
+            <input id="BatchName" type="text" name="BatchName" required>
+        </div>
+        <div>
+            <label for="Year">Enter Year of Program</label>
+            <input id="Year" type="number" name="Year" required>
+        </div>
+        <div>
+            <label for="Program">Enter Type of Program</label>
+            <select id="Program" name="Program" required>
+                <option value="" disabled selected>Select Type of Program</option>
+                <option value="BTech" id="BTech">BTech</option>
+                <option value="MTech" id="MTech">MTech</option>
+                <option value="PhD" id="PhD">PhD</option>
+                <option value="B.Arch" id="BArch">B.Arch</option>
+            </select>
+        </div>
+        <% for(let f of courses){ %>
+            <input type="checkbox" id="<%= f.CourseCode %>" name="course" value="<%= f.CourseTitle %>">
+            <label for="<%= f.CourseCode %>"><%= f.CourseTitle %></label>
+        <% } %>    
+
+        <button type="submit">Next</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Details</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        nav {
+            background-color: #007bff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .navbar-brand {
+            color: #fff;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logout-btn {
+            background-color: #fff;
+            color: #007bff;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+
+        .logout-btn:hover {
+            background-color: #e6e6e6;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a class="navbar-brand" href="/">Iris</a>
+        <form action="/logout" method="post">
+            <button class="logout-btn" type="submit">Logout</button>
+        </form>
+    </nav>
+    <h1>Course Details</h1>
+
+    <p><strong>Course ID:</strong> <%= courseId %></p>
+    <p><strong>Schedule:</strong> <%= schedule %></p>
+    <p><strong>Course Type:</strong> <%= CourseType %></p>
+    <p><strong>Course Title:</strong> <%= CourseTitle %></p>
+    <p><strong>Credits:</strong> <%= Credits %></p>
+
+    <h2>Students</h2>
+    <% if (students.length > 0) { %>
+        <ul>
+            <% students.forEach(student => { %>
+                <li>
+                    <strong>Student ID:</strong> <%= student.StudentId %><br>
+                    <strong>Student Name:</strong> <%= student.Name %>
+                    
+                    <!-- Delete button form for each student -->
+                    <form action="/delete" method="post" style="display:inline;">
+                        <input type="hidden" name="studentId" value="<%= student.StudentId %>">
+                        <input type="hidden" name="courseId" value="<%=courseId %>">
+                        <button type="submit">Delete</button>
+                    </form>
+                </li>
+            <% }); %>
+        </ul>
+    <% } else { %>
+        <p>No students enrolled in this course.</p>
+    <% } %>
+</body>
+</html>

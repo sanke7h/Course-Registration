@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Faculty</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        div {
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            width: 400px; /* Set the width as needed */
+        }
+
+        section {
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 10px 0; /* Added margin below each button */
+            width: 100%; /* Make all buttons have the same width */
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        nav {
+            background-color: #007bff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .navbar-brand {
+            color: #fff;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .navbar-btn {
+            background-color: #fff;
+            color: #007bff;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+
+        .navbar-btn:hover {
+            background-color: #e6e6e6;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a class="navbar-brand" href="/">Iris</a>
+        <form action="/logout" method="post">
+            <button class="navbar-btn" type="submit">Logout</button>
+        </form>
+    </nav>
+    <h1>Faculty Details</h1>
+    <div>
+        <section><b>Name:</b><%= faculty.Name %></section>
+        <section><b>Role:</b><%= faculty.Role %></section>
+        <section><b>StaffId:</b>Rs.<%= faculty.StaffId %></section>
+        <section><b>Department:</b><%= faculty.Department %></section>
+        <section><b>Email:</b><%= faculty.Email %></section>
+    </div>
+    <div>
+        <form action="/addci" method="get">
+            <button type="submit">Add Course Instructor</button>
+        </form>
+
+        <form action="/addbatch" method="get">
+            <button type="submit">Create New Batch</button>
+        </form>
+
+        <form action="/addcourse" method="get">
+            <button type="submit">Create New Course</button>
+        </form>
+
+        <form action="/allbatches" method="get">
+            <button type="submit">View Batches</button>
+        </form>
+
+        <form action="/allcourses" method="get">
+            <button type="submit">All Courses</button>
+        </form>
+
+        <form action="/faculty_all" method="get">
+            <button type="submit">Working Staff</button>
+        </form>
+
+        <form action="/mycourses" method="get">
+            <button type="submit">My Courses</button>
+        </form>
+    </div>
+</body>
+</html>

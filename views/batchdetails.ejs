@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Batch Details</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        ul, ol {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        nav {
+            background-color: #007bff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .navbar-brand {
+            color: #fff;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logout-btn {
+            background-color: #fff;
+            color: #007bff;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+
+        .logout-btn:hover {
+            background-color: #e6e6e6;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a class="navbar-brand" href="/">Iris</a>
+        <form action="/logout" method="post">
+            <button class="logout-btn" type="submit">Logout</button>
+        </form>
+    </nav>
+    <% if(flag1===0){ %>
+        <ul>
+            <li>Batch Name: <%= formattedData.BatchName %></li>
+            <li>Batch Year: <%= formattedData.BatchYear %></li>
+            <li>Batch Programme: <%= formattedData.BatchProgramme %></li>
+        </ul>
+
+        <h2>Students</h2>
+        <ul>
+            <% formattedData.Students.forEach(student => { %>
+                <li>Student ID: <%= student.StudentId %>, Name: <%= student.Name %></li>
+            <% }); %>
+        </ul>
+
+        <h2>Courses</h2>
+        <ul>
+            <% formattedData.Courses.forEach(course => { %>
+                <li>Course Code: <%= course.CourseCode %>, Course Title: <%= course.CourseTitle %></li>
+            <% }); %>
+        </ul>
+        <form action="/start_registration" method="post">
+            <input type="hidden" name="BatchId" value="<%= batch._id %>">
+            <button type="submit">Start Registration</button>
+        </form>
+    <% }else if(flag1===1){ %>
+        <ul>
+            <li>Batch Name: <%= formattedData.BatchName %></li>
+            <li>Batch Year: <%= formattedData.BatchYear %></li>
+            <li>Batch Programme: <%= formattedData.BatchProgramme %></li>
+        </ul>
+
+        <h2>Students</h2>
+        <ul>
+            <% formattedData.Students.forEach(student => { %>
+                <li>Student ID: <%= student.StudentId %>, Name: <%= student.Name %></li>
+            <% }); %>
+        </ul>
+
+        <h2>Courses</h2>
+        <ul>
+            <% formattedData.Courses.forEach(course => { %>
+                <li>Course Code: <%= course.CourseCode %>, Course Title: <%= course.CourseTitle %></li>
+            <% }); %>
+        </ul>
+        <form action="/start_registration" method="post">
+            <button type="submit" disabled>Registration Running</button>
+        </form>
+    <% }else if(flag1===2){ %>
+        <h1>Batch Details</h1>
+
+        <p><strong>Batch Name:</strong> <%= formattedData.BatchName %></p>
+        <p><strong>Batch Year:</strong> <%= formattedData.BatchYear %></p>
+        <p><strong>Batch Programme:</strong> <%= formattedData.BatchProgramme %></p>
+
+        <h2>Courses</h2>
+        <ol>
+            <% formattedData.Courses.forEach(course => { %>
+                <li>
+                    <div>
+                        <p><strong>Course ID:</strong> <%= course.courseId %></p>
+                        <p><strong>Course Title:</strong> <%= course.courseTitle %></p>
+
+                        <h3>Students</h3>
+                        <ol>
+                            <% course.students.forEach(student => { %>
+                                <li>
+                                    <p><strong>Student No:</strong> <%= student.StudentNo %></p>
+                                    <p><strong>Student Name:</strong> <%= student.StudentName %></p>
+                                    <form action="/deleteStudent" method="post" style="display:inline;">
+                                        <input type="hidden" name="courseId" value="<%= course.courseId %>">
+                                        <input type="hidden" name="studentNo" value="<%= student.StudentNo %>">
+                                        <input type="hidden" name="BatchId" value="<%= batch._id %>">
+                                        <button type="submit">Remove Student</button>
+                                    </form>
+                                </li>
+                            <% }) %>
+                        </ol>
+                    </div>
+                </li>
+            </div>
+            </ol>
+            <% }) %>
+        <form action="/start_registration" method="post">
+            <button type="submit" disabled>Registration Ended</button>
+        </form>
+    <% } %>
+</body>
+</html>

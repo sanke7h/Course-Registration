@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Faculty</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            width: 400px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <form action="/addfaculty" method="post">
+        <div>
+            <label for="Name">Enter Instructor Name</label>
+            <input id="Name" type="text" name="Name" required>
+        </div>
+        <div>
+            <label for="Email">Enter Email</label>
+            <input id="Email" type="email" name="Email" required>
+        </div>
+        <div>
+            <label for="Password">Enter Password</label>
+            <input id="Password" type="password" name="Password" required>
+        </div>
+        <div>
+            <label for="StaffId">Enter StaffId</label>
+            <input id="StaffId" type="text" name="StaffId" required>
+        </div>
+        <div>
+            <label for="Role">Select Role</label>
+            <select id="Role" name="Role" required>
+                <option value="" disabled selected>Select a Role</option>
+                <option value="Faculty Advisor">Faculty Advisor</option>
+                <option value="Course Instructor">Course Instructor</option>
+            </select>
+        </div>
+        <div>
+            <label for="Department">Select Department</label>
+            <select id="Department" name="Department" required>
+                <option value="" disabled selected>Select a Department</option>
+                <option value="CSE">Computer Science and Engineering (CSE)</option>
+                <option value="IT">Information Technology (IT)</option>
+                <option value="EEE">Electrical and Electronics Engineering (EEE)</option>
+                <option value="ECE">Electronics and Communication Engineering (ECE)</option>
+                <option value="MECH">Mechanical Engineering (MECH)</option>
+                <option value="CV">Civil Engineering (CV)</option>
+                <option value="CH">Chemical Engineering (CH)</option>
+                <option value="MI">Mining Engineering (MI)</option>
+                <option value="MT">Metallurgical Engineering (MT)</option>
+            </select>
+        </div>
+        <button type="submit">Sign In</button>
+    </form>
+</body>
+</html>
